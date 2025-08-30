@@ -9,13 +9,13 @@ export const register = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
-  const { name, email, password, role, contactNumber } = req.body;
+  const { name, email, password, role, contactNumber, location } = req.body;
 
   const exists = await User.findOne({ email });
   if (exists) return res.status(409).json({ message: "Email already registered" });
 
-  const user = await User.create({ name, email, password, role, contactNumber });
-  res.status(201).json({ id: user._id, name, email, role, token: generateToken(user._id, role) });
+  const user = await User.create({ name, email, password, role, contactNumber, location });
+  res.status(201).json({ id: user._id, name, email, role, contactNumber,location, token: generateToken(user._id, role) });
 };
 
 export const login = async (req, res) => {
@@ -26,3 +26,12 @@ export const login = async (req, res) => {
   }
   res.json({ id: user._id, name: user.name, email, role: user.role, token: generateToken(user._id, user.role) });
 };
+
+export const logout = async (req, res) => {
+  try {
+    res.status(200).json({ message: "Logged out successfully. Please clear token on client." });
+  } catch (error) {
+    res.status(500).json({ message: "Server error during logout" });
+  }
+};
+
