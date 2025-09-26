@@ -3,6 +3,7 @@ import { Users, Utensils, Shield, Heart, LinkIcon } from "lucide-react"; // icon
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar.jsx"
 import Slideshow from "../components/Slideshow.jsx"
+import Leaderboard from "../components/Leaderboard.jsx";
 
 const Home = () => {
 
@@ -12,7 +13,7 @@ const Home = () => {
     <div className="font-sans">
         <Navbar />
       {/* Hero Section */}
-      <div className=" bg-[#ede4e1] p-5 flex flex-col lg:flex-row">
+      <div className=" bg-[#ede4e1] p-5 flex flex-col lg:flex-row mt-[70px]">
         <section className="flex-1 lg:w-1/2 min-h-screen flex flex-col items-center justify-center text-center px-6 py-20  text-[#4d261c]"> 
         <h1 className="text-5xl  font-bold mb-10"> "Turning Surplus Into Smiles - Donate Food, Feed Hope" </h1> 
         <p className="text-lg  max-w-2xl mb-10"> FoodChain is a platform that helps Messes donate surplus food, NGOs distribute it,
@@ -52,6 +53,14 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+
+
+      <section className="py-16 px-16 text-center ">
+        <Leaderboard />     
+      </section>
+
+
 
       {/* Features Section */}
       <section className="py-16 px-6 bg-[#ede4e1]">

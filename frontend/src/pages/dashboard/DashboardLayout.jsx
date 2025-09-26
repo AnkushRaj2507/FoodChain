@@ -36,7 +36,7 @@ export default function DashboardLayout() {
     <div className="min-h-screen w-full bg-[#f6f5f2]">
       <div className="flex">
         {/* sidebar */}
-        <aside className="w-64 min-h-screen bg-white border-r">
+        <aside className="w-64 min-h-screen fixed top-0 left-0 bg-white border-r">
           <div className="p-5 border-b">
             <div className='flex'>
               <h2 className='text-2xl  font-bold '>Food</h2>
@@ -68,7 +68,7 @@ export default function DashboardLayout() {
         </aside>
 
         {/* main */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-6 ml-64">
           <Outlet />
         </main>
       </div>

@@ -13,6 +13,8 @@ import Donations from "./pages/dashboard/Donations.jsx";
 import Pickups from "./pages/dashboard/Pickups.jsx";
 import Admin from "./pages/dashboard/Admin.jsx";
 
+import FullLeaderboard from "./pages/FullLeaderboard.jsx";
+
 
 
 const App = () => {
@@ -22,6 +24,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/leaderboard" element={<FullLeaderboard />} />
 
         <Route
           path="/dashboard"
