@@ -7,19 +7,26 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import foodRoutes from "./routes/foodRoutes.js";
 
+// deployment
+import path from "path";
+
 dotenv.config();
 connectDB();
 
+const PORT = process.env.PORT || 5000;
 const app = express();
+
+// deploy
+const __dirname = path.resolve();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// Create HTTP server
+// HTTP server
 const server = createServer(app);
 
-// Setup Socket.IO
+// Socket.IO setup 
 export const io = new Server(server, {
   cors: {
     origin: "*", // You can restrict this to your frontend URL
@@ -49,7 +56,12 @@ app.get("/", (req, res) => {
   res.send("Food Donation Platform API is running...");
 });
 
-const PORT = process.env.PORT || 5000;
+// deploy
+// app.use(express.static(path.join(__dirname, "frontend/dist")));
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+// });
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
