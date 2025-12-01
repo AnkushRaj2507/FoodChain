@@ -1,0 +1,36 @@
+services:
+  # ===============================
+  # Backend (Express API)
+  # ===============================
+  - type: web
+    name: mern-backend
+    env: node
+    plan: free
+    buildCommand: "cd backend && npm install"
+    startCommand: "cd backend && npm run dev"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES
+        value: 7d
+      - key: CORS_ORIGIN
+        value: https://mern-frontend.onrender.com
+
+  # ===============================
+  # Frontend (React + Vite dev server)
+  # ===============================
+  - type: web
+    name: mern-frontend
+    env: node
+    plan: free
+    buildCommand: "cd frontend && npm install"
+    startCommand: "cd frontend && npm run dev -- --host"
+    envVars:
+      - key: VITE_API_URL
+        value: https://mern-backend.onrender.com
