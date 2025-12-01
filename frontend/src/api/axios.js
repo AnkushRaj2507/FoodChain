@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: "http://mern-backend-f594.onrender.com/api",
+    baseURL: "https://mern-backend-f594.onrender.com/api",
 });
 
 API.interceptors.request.use((req)=>{
